@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Livewire\Eventos\ShowEvents;
-use App\Http\Livewire\ShowUser;
+use App\Http\Livewire\usuarios\ShowUser;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,8 +28,24 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
+    
+    //usuarios
     Route::get('/users', ShowUser::class )->name('users');
 
+   //Eventos
     Route::get('/events', ShowEvents::class )->name('events');
+
+    //settings acount
+    Route::get('/settings/account', function () {
+        return view('profile/account');
+    })->name('account');  
+
+    Route::get('/settings/notifications', function () {
+        return view('profile/notifications');
+    })->name('notifications');
+
+    Route::get('/settings/plans', function () {
+        return view('profile/plans');
+    })->name('plans');  
 
 });

@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         Storage::deleteDirectory('perfil');
         Storage::makeDirectory('perfil');
-        //\App\Models\User::factory(10)->create()->assignRole('Admin');
+        /* \App\Models\User::factory(10)->create()->assignRole('Admin'); */
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

@@ -1,6 +1,8 @@
+/* import './script.js'; */
 import './bootstrap';
 
 import Alpine from 'alpinejs';
+import focus from '@alpinejs/focus';
 
 // Import Chart.js
 import { Chart } from 'chart.js';
@@ -41,6 +43,7 @@ import fintechCard14 from './components/fintech-card-14';
 
 // Call Alpine
 window.Alpine = Alpine;
+Alpine.plugin(focus);
 Alpine.start();
 
 

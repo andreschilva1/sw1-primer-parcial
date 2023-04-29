@@ -15,8 +15,12 @@
     @livewireStyles
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @vite(['resources/css/app.css',
+            'resources/js/app.js',
+            'resources/js/script.js',
+            ])
+ 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"> </script>
 
 </head>
 
@@ -40,16 +44,17 @@
         <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden @if ($attributes['background']) {{ $attributes['background'] }} @endif"
             x-ref="contentarea">
 
-            <x-app.header />
+            {{-- @livewire('navigation-menu') --}}
+             <x-app.header/>
 
             <main>
+                {{-- <img id="image" src="{{asset('images/avatar-01.jpg')}}" alt=""> --}}
                 {{ $slot }}
             </main>
 
         </div>
 
     </div>
-
 
     @livewireScripts
     <script>
@@ -63,8 +68,10 @@
         })
     </script>
 
-    @stack('js')
     
+
+    @stack('js')
+
 </body>
 
 </html>

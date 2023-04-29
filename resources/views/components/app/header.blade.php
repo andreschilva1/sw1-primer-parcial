@@ -40,6 +40,7 @@
                 <!-- User button -->
                 <x-dropdown-profile align="right" />
 
+                
             </div>
 
         </div>
