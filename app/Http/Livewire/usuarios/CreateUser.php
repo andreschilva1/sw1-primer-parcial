@@ -8,6 +8,9 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Cliente;
+use App\Models\Fotografo;
+use App\Models\Organizador;
 
 class CreateUser extends Component
 {
@@ -20,7 +23,7 @@ class CreateUser extends Component
 
     protected $rules = [
         'name' => 'required|max:25',
-        'email' => 'required|unique:users|max:25',
+        'email' => 'required|email|unique:users|max:25',
         'password' => 'required|max:50',
         'rol' => 'required',
         'foto' => 'required|image|max:2048'
@@ -51,7 +54,7 @@ class CreateUser extends Component
         $this->validate();
         $alerta = [];
         $usuario = new User();
-
+        
         $foto = $this->foto->store('perfil');
 
         $usuario->name = $this->name;
@@ -60,14 +63,26 @@ class CreateUser extends Component
         $usuario->profile_photo_path = $foto;
         
         
-        if ($usuario->save()) {
-            $usuario->roles()->sync($this->rol);
-            $alerta = ['mensaje' => 'El usuario se creo satisfactoriamente','icono'=>'success'];
-            
-        } else {
-            $alerta = ['mensaje' => 'Error no se pudo crear el usuario','icono'=>'error'];
-            
+        
+        $usuario->save();
+        $usuario->roles()->sync($this->rol);
+        if ($usuario->model_has_role->role->name == 'Cliente') {
+            Cliente::create([
+                'user_id' => $usuario->id,
+            ]);
+        }elseif($usuario->model_has_role->role->name == 'Fotografo'){
+            Fotografo::create([
+                'user_id' => $usuario->id,
+            ]);
+        }elseif($usuario->model_has_role->role->name == 'Organizador'){
+            Organizador::create([
+                'user_id' => $usuario->id,
+            ]);
         }
+        
+        
+        
+        $alerta = ['mensaje' => 'El usuario se creo satisfactoriamente','icono'=>'success'];
         
         $this->reset(['name', 'email','password','foto']);
         $this->emitTo('usuarios.show-user','render');

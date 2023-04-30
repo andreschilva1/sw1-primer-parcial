@@ -32,7 +32,7 @@ class UserSeeeder extends Seeder
             'password' => $password,
             'profile_photo_path' => null,
             'telefono' => '65152340',
-        ])->assignRole('Admin');
+        ])->assignRole('Organizador');
 
         User::create([
             'name' => 'Juan Mendoza Pereira',
@@ -47,7 +47,7 @@ class UserSeeeder extends Seeder
             'password' => $password,
             'profile_photo_path' => null,
             'telefono' => '63295852',
-        ])->assignRole('Admin');
+        ])->assignRole('Organizador');
         User::create([
             'name' => 'Lucia Rodrigues',
             'email' => 'lucia_bnb@gmail.com',

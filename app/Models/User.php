@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use App\Models\model_has_role;
 
 class User extends Authenticatable
 {
@@ -66,5 +67,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Departamento::class,'departamentos_id');
     } */
+
+    public function model_has_role(){
+        return $this->hasOne(model_has_role::class,'model_id','id');
+    }
+
+    public function organizador(){
+        return $this->hasOne(Organizador::class,'user_id','id');
+    }
+
 
 }

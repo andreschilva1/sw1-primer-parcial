@@ -15,8 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        //directorio para las imagenes de los usuarios
         Storage::deleteDirectory('perfil');
         Storage::makeDirectory('perfil');
+
+        //directorio para las imagenes de los eventos
+        Storage::deleteDirectory('eventos');
+        Storage::makeDirectory('eventos');
         /* \App\Models\User::factory(10)->create()->assignRole('Admin'); */
 
         // \App\Models\User::factory()->create([
@@ -26,7 +31,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(RoleSeeder::class);
         $this->call(UserSeeeder::class);
-        
+        $this->call(OrganizadorSeeder::class);
+        \App\Models\Evento::factory(20)->create();
         
     }
 }

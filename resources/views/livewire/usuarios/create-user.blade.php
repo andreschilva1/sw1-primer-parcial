@@ -1,4 +1,4 @@
-<div class="flex">
+<div>
     {{-- <x-button class="ml-auto" wire:click=openCLose()>
         Crear nuevo usuario
     </x-button> --}}

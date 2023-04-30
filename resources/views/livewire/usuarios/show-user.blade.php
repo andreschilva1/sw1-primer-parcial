@@ -1,83 +1,4 @@
-{{-- <div>
-    <!-- component -->
 
-    <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
-
-        <div class="px-6 py-4">
-
-             @livewire('create-user')
-            
-            <div class="relative mt-1">
-                <div class="absolute   pl-3  pointer-events-none py-3">
-                   
-                    <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                    
-                    
-                </div>
-                
-                
-                <x-input wire:model="search"
-                class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-               
-            </div>
-            
-          
-        </div>
-        
-
-        <table class="w-full border-collapse bg-white text-left text-sm text-gray-500" >
-            <thead class="bg-gray-50">
-                <tr>
-                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">Id</th>
-                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">Nombre</th>
-                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">Correo</th>
-                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">Accion</th>
-                </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-100 border-t border-gray-100">
-                @foreach ($usuarios as $usuario)
-                    <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4">{{ $usuario->id }}</td>
-                        <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
-                            <div class="relative h-10 w-10">
-                                <img class="h-full w-full rounded-full object-cover object-center"
-                                    src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                    alt="" />
-                                <span
-                                    class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
-                            </div>
-                            <div class="text-sm">
-                                <div class="font-medium text-gray-700">{{ $usuario->name }}</div>
-                            </div>
-                        </th>
-
-                        <td class="px-6 py-4">{{ $usuario->email }}</td>
-
-                        <td class="px-6 py-4">
-                            <div class="flex justify-end gap-4">
-                                <a x-data="{ tooltip: 'Delete' }" href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="h-6 w-6" x-tooltip="tooltip">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
-                                    </svg>
-                                </a>
-                                @livewire('update-user', ['usuario' => $usuario], key($usuario->id))
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-
-
-            </tbody>
-        </table>
-    </div>
-</div> --}}
 <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
 
     <!-- Page header -->
@@ -92,7 +13,20 @@
         <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
 
             <!-- Search form -->
-            <div class="relative mt-1">
+            <div class="relative">
+                <x-input wire:model='search' type="search" placeholder="Search…"
+                    class="form-input pl-9  focus:ring-blue-500 focus:border-blue-500" />
+                <span class="absolute pr-3 pt-2.5 inset-0 right-auto  ">
+                    <svg class=" w-4 h-4 shrink-0 fill-current text-slate-400 group-hover:text-slate-500 ml-3 mr-2"
+                        viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7 14c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zM7 2C4.243 2 2 4.243 2 7s2.243 5 5 5 5-2.243 5-5-2.243-5-5-5z" />
+                        <path
+                            d="M15.707 14.293L13.314 11.9a8.019 8.019 0 01-1.414 1.414l2.393 2.393a.997.997 0 001.414 0 .999.999 0 000-1.414z" />
+                    </svg>
+                </span>
+            </div>
+            {{-- <div class="relative ">
                 <div class="absolute   pl-3  pointer-events-none py-2">
 
                     <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20"
@@ -105,14 +39,14 @@
 
                 </div>
 
-                <x-input wire:model="search" class="form-input pl-9 focus:ring-blue-500 focus:border-blue-500" />
-                {{-- <x-input wire:model="search"
-                    class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /> --}}
+                <x-input wire:model='search' type="search" placeholder="Search…"
+                    class="form-input pl-9  focus:ring-blue-500 focus:border-blue-500" />
 
-            </div>
-            {{-- <x-search-form placeholder="Search by invoice ID…" /> --}}
 
-            <!-- Create invoice button -->
+            </div> --}}
+           
+
+            <!-- Create user button -->
             @livewire('usuarios.create-user')
 
         </div>
@@ -139,20 +73,6 @@
             <label class="ml4" for="">
                 Filas
             </label>
-
-        </div>
-
-        <!-- Right side -->
-        <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
-
-            {{--  <!-- Delete button -->
-            <x-actions.delete-button />
-
-            <!-- Dropdown -->
-            <x-date-select />
-
-            <!-- Filter button -->
-            <x-dropdown-filter align="right" /> --}}
 
         </div>
 
@@ -278,7 +198,7 @@
 
             </tbody>
         </table>
-
+    <!-- Pagination -->
         <div class="px-6 py-3">
 
             {{ $usuarios->links() }}
@@ -286,11 +206,11 @@
         </div>
 
     @else
-        <span>No existe ningun registro coincidente </span>
+        <span class="text-black">No existe ningun registro coincidente</span>
 
     @endif
 
-    <!-- Pagination -->
+
     
 
     <x-dialog-modal wire:model="openEdit">
@@ -380,7 +300,7 @@
                         <select class="form-select w-full" wire:model="rol">
                             <option value="{{ $rol }}"></option>
                             @foreach ($roles as $role)
-                                <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                <option value="{{ $role->id }}">{{ $role->name }}</option>
                             @endforeach
                         </select>
                         <x-input-error for="rol" />

@@ -9,6 +9,7 @@ class Fotografo extends Model
 {
     use HasFactory;
 
+    protected $table = 'fotografos';
     protected $fillable = [
         'user_id',
     ];

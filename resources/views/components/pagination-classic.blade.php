@@ -10,6 +10,6 @@
         </ul>
     </nav>
     <div class="text-sm text-slate-500 text-center sm:text-left">
-        Showing <span class="font-medium text-slate-600">1</span> to <span class="font-medium text-slate-600">10</span> of <span class="font-medium text-slate-600">467</span> results
+        Mostrando <span class="font-medium text-slate-600">1</span> a <span class="font-medium text-slate-600">10</span> de <span class="font-medium text-slate-600">467</span> Resultados
     </div>
 </div>

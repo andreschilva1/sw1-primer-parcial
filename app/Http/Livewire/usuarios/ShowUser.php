@@ -27,19 +27,19 @@ class ShowUser extends Component
     
     protected $rules = [
         'usuario.name' => 'required|max:25',
-        'usuario.email' => 'required|max:25',
+        'usuario.email' => 'required|email|max:25',
         'rol' => 'required', 
     ];
 
     public function render()
-    {
-        
+    {       
+            
             $roles = Role::all(); 
             $usuarios = User::join('model_has_roles','model_has_roles.model_id', 'users.id')
             ->join('roles', 'roles.id', 'model_has_roles.role_id')->select('users.*','roles.name as rol')
             ->where('users.name','like','%'. $this->search .'%')
             ->orWhere('users.email','like','%'. $this->search .'%')
-            ->orwhere('roles.name','like','%'. $this->search .'%')->paginate($this->count);
+            ->orwhere('roles.name','like','%'. $this->search .'%')->orderBy('users.id','desc')->paginate($this->count);
 
             /* $usuarios = User::join($this->rol, $this->rol.'.user_id', 'users.id')->where('name','like','%'. $this->search .'%')
             ->orWhere('email','like','%'. $this->search .'%')->get(); */
@@ -64,6 +64,11 @@ class ShowUser extends Component
         $this->resetPage();
     }
 
+    public function updatingCount(){
+        $this->resetPage();
+    }
+
+
     public function updatedOpenEdit()
     {
         if ($this->openEdit == false) {
@@ -75,7 +80,8 @@ class ShowUser extends Component
 
     public function edit(User $user) {
         $this->usuario = $user;
-        $this->rol = $user->getRoleNames()->first();
+       // dd($this->usuario->model_has_role->role->name);
+        $this->rol = $this->usuario->model_has_role->role_id;
         $this->openEdit = true; 
        
     }
@@ -100,8 +106,7 @@ class ShowUser extends Component
 
         $this->usuario->save();
 
-        $rolId = Role::findByName($this->rol)->id;
-        $this->usuario->roles()->sync($rolId);
+        $this->usuario->roles()->sync($this->rol);
 
         $this->reset(['foto','pass','rol']);
 

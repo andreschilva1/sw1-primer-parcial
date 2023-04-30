@@ -1,9 +1,14 @@
+@props(['titulo' => '','foto' => '', 'direccion' => '', 'fecha' => '', 'hora' => '', 'precio' => '', 'boton' => 'Ver mas'])
 <!-- Card 1 -->
 <div class="col-span-full sm:col-span-6 xl:col-span-3 bg-white shadow-lg rounded-sm border border-slate-200 overflow-hidden">
     <div class="flex flex-col h-full">
         <!-- Image -->
         <div class="relative">
-            <img class="w-full" src="{{ asset('images/applications-image-09.jpg') }}" width="286" height="160" alt="Application 09" />
+            @if ($foto)
+                <img class="w-full" src="{{asset('storage/' . $foto) }}" width="286" height="160" alt="Application 09" />    
+            @else
+                <img class="ml-9 mt-3 w-3/4" src="{{ asset('images/320x320.png') }}" width="286" height="160" alt="Application 09" />
+            @endif
             <!-- Like button -->
             <button class="absolute top-0 right-0 mt-4 mr-4">
                 <div class="text-slate-100 bg-slate-900 bg-opacity-60 rounded-full">
@@ -20,7 +25,7 @@
             <div class="grow">
                 <!-- Header -->
                 <header class="mb-2">
-                    <h3 class="text-lg text-slate-800 font-semibold">Health and Happiness Workshop</h3>
+                    <h3 class="text-lg text-slate-800 font-semibold">{{$titulo}}</h3>
                 </header>
                 <!-- List -->
                 <ul class="text-sm space-y-2 mb-5">
@@ -28,26 +33,32 @@
                         <svg class="w-4 h-4 fill-current text-slate-400 shrink-0 mr-3" viewBox="0 0 16 16">
                             <path d="M15 2h-2V0h-2v2H9V0H7v2H5V0H3v2H1a1 1 0 00-1 1v12a1 1 0 001 1h14a1 1 0 001-1V3a1 1 0 00-1-1zm-1 12H2V6h12v8z" />
                         </svg>
-                        <div class="text-rose-500">Fri 7 Aug 2021 23:00 CEST</div>
+                        <div class=>Direccion: {{$direccion}}</div>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-4 h-4 fill-current text-slate-400 shrink-0 mr-3" viewBox="0 0 16 16">
+                            <path d="M15 2h-2V0h-2v2H9V0H7v2H5V0H3v2H1a1 1 0 00-1 1v12a1 1 0 001 1h14a1 1 0 001-1V3a1 1 0 00-1-1zm-1 12H2V6h12v8z" />
+                        </svg>
+                        <div class="text-rose-500">Fecha: {{$fecha}}</div>
                     </li>
                     <li class="flex items-center">
                         <svg class="w-4 h-4 fill-current text-slate-400 shrink-0 mr-3" viewBox="0 0 16 16">
                             <path d="M8 6c2.9 0 6-.9 6-3s-3.1-3-6-3-6 .9-6 3 3.1 3 6 3zM2 6.5V8c0 2.1 3.1 3 6 3s6-.9 6-3V6.5C12.6 7.4 10.5 8 8 8s-4.6-.6-6-1.5zM2 11.5V13c0 2.1 3.1 3 6 3s6-.9 6-3v-1.5c-1.4 1-3.5 1.5-6 1.5s-4.6-.6-6-1.5z" />
                         </svg>
-                        <div>Starts at $16.24 / person</div>
+                        <div>Hora: {{$hora}}</div>
                     </li>
                 </ul>
             </div>
             <!-- Card footer -->
             <div>
-                <a class="btn-sm w-full bg-indigo-500 hover:bg-indigo-600 text-white" href="#0">Buy Tickets</a>
+                <a class="btn-sm w-full bg-indigo-500 hover:bg-indigo-600 text-white" href="#0">Enviar Solicitud</a>
             </div>
         </div>
     </div>
 </div>
 
 <!-- Card 2 -->
-<div class="col-span-full sm:col-span-6 xl:col-span-3 bg-white shadow-lg rounded-sm border border-slate-200 overflow-hidden">
+{{-- <div class="col-span-full sm:col-span-6 xl:col-span-3 bg-white shadow-lg rounded-sm border border-slate-200 overflow-hidden">
     <div class="flex flex-col h-full">
         <!-- Image -->
         <div class="relative">
@@ -188,4 +199,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
