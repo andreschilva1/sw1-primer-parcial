@@ -14,11 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('cliente_fotografias', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('cliente_id');
             $table->unsignedBigInteger('fotografias_id');
-            $table->foreign('fotografias_id')->references('id')->on('fotografias');
-            $table->unsignedBigInteger('clientes_id');
-            $table->foreign('clientes_id')->references('id')->on('clientes');
+            
+            $table->primary(['cliente_id', 'fotografias_id']);
+            
+            $table->foreign('cliente_id')->references('id')->on('clientes')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('fotografias_id')->references('id')->on('fotografias')->onUpdate('cascade')->onDelete('cascade');
+            
+            
             $table->timestamps();
         });
     }

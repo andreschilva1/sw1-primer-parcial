@@ -15,9 +15,11 @@ return new class extends Migration
     {
         Schema::create('evento_fotografos', function (Blueprint $table) {
             $table->unsignedBigInteger('fotografos_id');
-            $table->foreign('fotografos_id')->references('id')->on('clientes');
-
             $table->unsignedBigInteger('eventos_id');
+            
+            $primary = ['fotografos_id', 'eventos_id'];
+            
+            $table->foreign('fotografos_id')->references('id')->on('clientes');
             $table->foreign('eventos_id')->references('id')->on('eventos');
             $table->timestamps();
             

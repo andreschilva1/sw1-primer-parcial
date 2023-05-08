@@ -1,4 +1,3 @@
-/* import './script.js'; */
 import './bootstrap';
 
 import Alpine from 'alpinejs';

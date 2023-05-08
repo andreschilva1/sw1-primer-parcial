@@ -7,8 +7,6 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
-                'resources/js/face-api.min.js',
-                'resources/js/script.js',
                 
             ],
             refresh: [

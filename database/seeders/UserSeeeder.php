@@ -19,8 +19,8 @@ class UserSeeeder extends Seeder
         $password = Hash::make('12345678');
 
         User::create([
-            'name' => 'Admin',
-            'email' => 'admin@gmail.com',
+            'name' => 'Andres',
+            'email' => 'wasulwasol@gmail.com',
             'password' => $password,
             'profile_photo_path' => null,
             'telefono' => '69465520',
@@ -40,21 +40,21 @@ class UserSeeeder extends Seeder
             'password' => $password,
             'profile_photo_path' => null,
             'telefono' => '75174852',
-        ])->assignRole('Admin');
+        ])->assignRole('Organizador');
         User::create([
             'name' => 'Marco Antonio Soliz',
             'email' => 'marco@gmail.com',
             'password' => $password,
             'profile_photo_path' => null,
             'telefono' => '63295852',
-        ])->assignRole('Organizador');
+        ])->assignRole('Cliente');
         User::create([
             'name' => 'Lucia Rodrigues',
             'email' => 'lucia_bnb@gmail.com',
             'password' => $password,
             'profile_photo_path' => null,
             'telefono' => '63295811',
-        ])->assignRole('Admin');
+        ])->assignRole('Cliente');
 
         User::create([
             'name' => 'Enrique Iglesias',
@@ -62,14 +62,14 @@ class UserSeeeder extends Seeder
             'password' => $password,
             'profile_photo_path' => null,
             'telefono' => '64140472',
-        ])->assignRole('Admin');
+        ])->assignRole('Fotografo');
         User::create([
             'name' => 'Andres Luis Guerra',
             'email' => 'andres_bnb@gmail.com',
             'password' => $password,
             'profile_photo_path' => null,
             'telefono' => '64140472',
-        ])->assignRole('Admin');
+        ])->assignRole('Fotografo');
         User::create([
             'name' => 'Alberto Soliz Montenegro',
             'email' => 'alberto_bnb@gmail.com',

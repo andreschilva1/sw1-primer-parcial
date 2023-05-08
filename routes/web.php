@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Eventos\DetalleEvent;
 use App\Http\Livewire\Eventos\ShowEvents;
 use App\Http\Livewire\usuarios\ShowUser;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,7 @@ Route::middleware([
 
    //Eventos
     Route::get('/events', ShowEvents::class )->name('events');
+    Route::get('/events/detalles/{id}', DetalleEvent::class )->name('events.detalles');
 
     //settings acount
     Route::get('/settings/account', function () {
@@ -47,5 +49,7 @@ Route::middleware([
     Route::get('/settings/plans', function () {
         return view('profile/plans');
     })->name('plans');  
+
+    
 
 });

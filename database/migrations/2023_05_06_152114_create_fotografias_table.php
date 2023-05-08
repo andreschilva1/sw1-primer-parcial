@@ -13,16 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('solicitudes', function (Blueprint $table) {
+        Schema::create('fotografias', function (Blueprint $table) {
             $table->id();
-            $table->String('emisor');
-            $table->String('receptor');
-            $table->String('estado');
-            $table->date('fecha');
-            $table->time('hora');
+            $table->string('nombre')->nullable();
+            $table->string('image_url');
+            $table->unsignedBigInteger('fotografos_id');
+            $table->foreign('fotografos_id')->references('id')->on('fotografos');
             $table->unsignedBigInteger('eventos_id');
-            $table->foreign('eventos_id')->references('id')->on('eventos');
-
+            $table->foreign('eventos_id')->references('id')->on('eventos')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -34,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('solicitudes');
+        Schema::dropIfExists('fotografias');
     }
 };

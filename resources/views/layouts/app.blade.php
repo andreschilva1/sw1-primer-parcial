@@ -16,9 +16,8 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css',
-            'resources/js/app.js',
-            'resources/js/script.js',
-            ])
+            'resources/js/app.js'])
+    @livewireScripts
  
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"> </script>
 
@@ -56,21 +55,20 @@
 
     </div>
 
-    @livewireScripts
+    
     <script>
         Livewire.on('alert', function(mensaje) {
             Swal.fire(
-                'Buen Trabajo!',
+                mensaje['titulo'],
                 mensaje['mensaje'],
                 mensaje['icono'],
+                )
+            })
+     </script>
 
-            )
-        })
-    </script>
-
-    
 
     @stack('js')
+
 
 </body>
 

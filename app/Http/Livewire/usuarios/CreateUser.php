@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\usuarios;
 
+use App\Listeners\notificaciones\SendNotificacionUsuario;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Livewire\Component;
@@ -55,16 +56,22 @@ class CreateUser extends Component
         $alerta = [];
         $usuario = new User();
         
-        $foto = $this->foto->store('perfil');
+        //$foto = $this->foto->store('public/clientes/');
+        
 
         $usuario->name = $this->name;
         $usuario->email = $this->email;
         $usuario->password =  Hash::make($this->password);
-        $usuario->profile_photo_path = $foto;
-        
-        
-        
         $usuario->save();
+
+        $nombre = $this->foto->getClientOriginalName();
+        //dd($usuario->id);
+        $ruta = $this->foto->storeAs('public/usuarios/' . $usuario->id , $nombre);
+        $url = Storage::url($ruta);
+
+        $usuario->profile_photo_path = $url;
+        $usuario->save();
+        
         $usuario->roles()->sync($this->rol);
         if ($usuario->model_has_role->role->name == 'Cliente') {
             Cliente::create([

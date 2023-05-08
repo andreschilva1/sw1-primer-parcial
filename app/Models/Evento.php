@@ -18,7 +18,7 @@ class Evento extends Model
         'hora',
         'ubicacion',
         'photo_path',
-        'organizador_id',
+        'organizadores_id',
     ];
 
     public function organizador()

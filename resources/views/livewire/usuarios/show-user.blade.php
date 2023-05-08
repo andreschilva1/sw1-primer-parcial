@@ -132,7 +132,7 @@
                                 @if ($user->profile_photo_path)
                                     <a href="#" wire:click="edit({{ $user->id }})">
                                         <img class=" h-14 w-14 m-1 rounded-full object-cover object-center  relative "
-                                            src="{{ asset('storage/' . $user->profile_photo_path) }}" alt="" />
+                                            src="{{ $user->profile_photo_path }}" alt="" />
                                     </a>
                                 @else
                                     <a class=" h-14 w-14 bg-indigo-400 rounded-full border-black border-2 text-slate-700 hover:bg-indigo-500 hover:text-black"
@@ -233,7 +233,7 @@
                             <img class="h-24 w-24 rounded-full" src="{{ $foto->temporaryUrl() }}" alt="">
                         @elseif($usuario->profile_photo_path)
                             <img class="h-24 w-24 rounded-full"
-                                src="{{ asset('storage/' . $usuario->profile_photo_path) }}" alt="">
+                            src="{{ $usuario->profile_photo_path }}" alt="">
                         @else
                             <span class="btn-sm bg-indigo-500 rounded-lg text-slate-700">
                                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0"

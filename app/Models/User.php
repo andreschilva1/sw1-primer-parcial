@@ -76,5 +76,12 @@ class User extends Authenticatable
         return $this->hasOne(Organizador::class,'user_id','id');
     }
 
+    public function fotografo(){
+        return $this->hasOne(Fotografo::class,'user_id','id');
+    }
+    public function cliente(){
+        return $this->hasOne(Cliente::class,'user_id','id');
+    }
+
 
 }

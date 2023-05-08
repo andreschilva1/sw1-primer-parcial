@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('eventos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->nullable();
-            $table->string('descripcion')->nullable();
-            $table->string('direccion')->nullable();
+            $table->String('nombre')->nullable();
+            $table->String('descripcion')->nullable();
+            $table->String('direccion')->nullable();
             $table->date('fecha')->nullable();
             $table->time('hora')->nullable();
-            $table->string('photo_path', 2048)->nullable();
-            $table->string('ubicacion')->nullable();
+            $table->String('photo_path', 2048)->nullable();
+            $table->String('ubicacion')->nullable();
             $table->unsignedBigInteger('organizadores_id');
             $table->foreign('organizadores_id')->references('id')->on('organizadores');
             $table->timestamps();

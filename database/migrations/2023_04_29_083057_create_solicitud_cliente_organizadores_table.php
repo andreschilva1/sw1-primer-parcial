@@ -15,14 +15,18 @@ return new class extends Migration
     {
         Schema::create('solicitud_cliente_organizadores', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('emisor');
+            $table->unsignedBigInteger('receptor');
+            $table->String('estado');
+
             $table->unsignedBigInteger('organizadores_id');
             $table->foreign('organizadores_id')->references('id')->on('organizadores');
             
             $table->unsignedBigInteger('clientes_id');
             $table->foreign('clientes_id')->references('id')->on('clientes');
-            
-            $table->unsignedBigInteger('solicitudes_id');
-            $table->foreign('solicitudes_id')->on('solicitudes')->references('id')->onUpdate('cascade')->onDelete('cascade');
+        
+            $table->unsignedBigInteger('eventos_id');
+            $table->foreign('eventos_id')->references('id')->on('eventos')->onUpdate('cascade')->onDelete('cascade');
             
             $table->timestamps();
         });
