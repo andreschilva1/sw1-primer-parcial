@@ -19,8 +19,8 @@ return new class extends Migration
             
             $primary = ['fotografos_id', 'eventos_id'];
             
-            $table->foreign('fotografos_id')->references('id')->on('clientes');
-            $table->foreign('eventos_id')->references('id')->on('eventos');
+            $table->foreign('fotografos_id')->references('id')->on('fotografos')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('eventos_id')->references('id')->on('eventos')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
             
             

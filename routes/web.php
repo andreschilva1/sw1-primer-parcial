@@ -4,6 +4,9 @@ use App\Http\Livewire\Eventos\DetalleEvent;
 use App\Http\Livewire\Eventos\ShowEvents;
 use App\Http\Livewire\usuarios\ShowUser;
 use Illuminate\Support\Facades\Route;
+use App\Models\Evento;
+use App\Models\SolicitudClienteOrganizador;
+use App\Actions\Fortify\CreateNewUser;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 Route::middleware([
     'auth:sanctum',
@@ -42,6 +46,7 @@ Route::middleware([
         return view('profile/account');
     })->name('account');  
 
+
     Route::get('/settings/notifications', function () {
         return view('profile/notifications');
     })->name('notifications');
@@ -50,6 +55,6 @@ Route::middleware([
         return view('profile/plans');
     })->name('plans');  
 
-    
-
+   
+   
 });

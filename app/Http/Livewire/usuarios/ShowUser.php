@@ -100,7 +100,7 @@ class ShowUser extends Component
             }
 
             $nombre = $this->foto->getClientOriginalName();
-            $ruta = $this->foto->storeAs('public/usuarios/' . $this->usuario->id, $nombre);
+            $ruta = $this->foto->storeAs('public/perfil/' . $this->usuario->id, $nombre);
             $url = Storage::url($ruta);
             $this->usuario->profile_photo_path = $url;
 

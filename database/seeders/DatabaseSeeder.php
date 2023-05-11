@@ -23,6 +23,9 @@ class DatabaseSeeder extends Seeder
         Storage::deleteDirectory('public/usuarios');
         Storage::makeDirectory('public/usuarios');
 
+        Storage::deleteDirectory('public/perfil');
+        Storage::makeDirectory('public/perfil');
+
         //directorio para las imagenes de perfil de los eventos
         Storage::deleteDirectory('public/eventos');
         Storage::makeDirectory('public/eventos');

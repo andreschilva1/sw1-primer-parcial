@@ -23,7 +23,7 @@ return new class extends Migration
             $table->String('photo_path', 2048)->nullable();
             $table->String('ubicacion')->nullable();
             $table->unsignedBigInteger('organizadores_id');
-            $table->foreign('organizadores_id')->references('id')->on('organizadores');
+            $table->foreign('organizadores_id')->references('id')->on('organizadores')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

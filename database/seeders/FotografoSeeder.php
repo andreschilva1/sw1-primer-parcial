@@ -18,12 +18,15 @@ class FotografoSeeder extends Seeder
     {
 
             Fotografo::create([
-                'user_id' => 6,
+                'user_id' => 4,
              ]);
      
              Fotografo::create([
-                 'user_id' => 7,
+                 'user_id' => 5,
              ]);
+             Fotografo::create([
+                'user_id' => 6,
+            ]);
 
     } 
 }

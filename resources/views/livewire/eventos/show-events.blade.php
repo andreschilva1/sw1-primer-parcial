@@ -31,10 +31,12 @@
             </div>
 
             <!-- Filter button -->
-            {{-- <x-dropdown-filter align="right" /> --}}
+            <x-dropdown-filter align="right"  />
 
             <!-- Create events modal -->
-            @livewire('eventos.create-event')
+            @can('Crear Eventos')
+                @livewire('eventos.create-event')
+            @endcan
 
         </div>
 
@@ -45,12 +47,12 @@
 
         <ul class="text-sm font-medium flex flex-nowrap -mx-4 sm:-mx-6 lg:-mx-8 overflow-x-scroll no-scrollbar">
             <li class="pb-3 mr-6 last:mr-0 first:pl-4 sm:first:pl-6 lg:first:pl-8 last:pr-4 sm:last:pr-6 lg:last:pr-8">
-                <a class="text-indigo-500 whitespace-nowrap" href="#0">View All</a>
+                <a wire:click=$set('filtro','Todos') class="text-slate-500 hover:text-purple-700 focus:text-purple-700 focus:outline-none whitespace-nowrap" href="#">Eventos disponibles</a>
             </li>
             <li class="pb-3 mr-6 last:mr-0 first:pl-4 sm:first:pl-6 lg:first:pl-8 last:pr-4 sm:last:pr-6 lg:last:pr-8">
-                <a class="text-slate-500 hover:text-slate-600 whitespace-nowrap" href="#0">Courses</a>
+                <a wire:click="$set('filtro','MisEventos')" class="text-slate-500  hover:text-purple-700 focus:text-purple-700 focus:outline-none whitespace-nowrap" href="#">Mis Eventos</a>
             </li>
-            <li class="pb-3 mr-6 last:mr-0 first:pl-4 sm:first:pl-6 lg:first:pl-8 last:pr-4 sm:last:pr-6 lg:last:pr-8">
+            {{-- <li class="pb-3 mr-6 last:mr-0 first:pl-4 sm:first:pl-6 lg:first:pl-8 last:pr-4 sm:last:pr-6 lg:last:pr-8">
                 <a class="text-slate-500 hover:text-slate-600 whitespace-nowrap" href="#0">Digital Goods</a>
             </li>
             <li class="pb-3 mr-6 last:mr-0 first:pl-4 sm:first:pl-6 lg:first:pl-8 last:pr-4 sm:last:pr-6 lg:last:pr-8">
@@ -58,10 +60,10 @@
             </li>
             <li class="pb-3 mr-6 last:mr-0 first:pl-4 sm:first:pl-6 lg:first:pl-8 last:pr-4 sm:last:pr-6 lg:last:pr-8">
                 <a class="text-slate-500 hover:text-slate-600 whitespace-nowrap" href="#0">Crowdfunding</a>
-            </li>
+            </li> --}}
         </ul>
 
-       
+
         <div class="m-4 sm:mb-0">
             <label class="mr4" for="">
                 Mostrar
@@ -96,7 +98,7 @@
 
             <div class="grid grid-cols-12 gap-6">
                 @foreach ($eventos as $event)
-                    <x-events.shop-cards-03 :event="$event"  />
+                    <x-events.shop-cards-03 :event="$event" :filtro="$filtro"/>
                 @endforeach
             </div>
         </div>
@@ -109,7 +111,7 @@
     </div>
 
     {{-- Edit event --}}
-    <livewire:eventos.update-event  />
+    <livewire:eventos.update-event />
     {{-- <x-dialog-modal wire:model="openEdit">
 
         <x-slot name="title">
@@ -513,8 +515,8 @@
         </script>
     @endpush
 
-    <livewire:fotos.subir-fotos  />
-    
+    <livewire:fotos.subir-fotos />
+
 
     {{-- <div class="mb-4">
 
@@ -679,5 +681,5 @@
         </script>
         @endpush
     </div> --}}
-    
+
 </div>

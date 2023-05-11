@@ -23,16 +23,16 @@ class SolicitudFotografoOrganizador extends Model
 
     public function organizador()
     {
-        return $this->belongsTo(Organizador::class);
+        return $this->belongsTo(Organizador::class, 'organizadores_id', 'id');
     }
 
     public function fotografo()
     {
-        return $this->belongsTo(Fotografo::class);
+        return $this->belongsTo(Fotografo::class,'fotografos_id', 'id');
     }
 
     public function evento()
     {
-        return $this->belongsTo(Evento::class);
+        return $this->belongsTo(Evento::class, 'eventos_id', 'id');
     }
 }

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 /* Validator */
 use Illuminate\Support\Facades\Validator;
-use Laravel\Sanctum\HasApiTokens;
+
 
 
 class AuthenticatedAPIController extends Controller
@@ -75,6 +75,7 @@ class AuthenticatedAPIController extends Controller
         }
 
         $token = $user->createToken("API TOKEN")->plainTextToken;
+        
 
         $cookie = cookie('jwt', $token, 60 * 24);
 
@@ -87,15 +88,19 @@ class AuthenticatedAPIController extends Controller
         ], 200)->withCookie($cookie);
     }
 
-    /* public function logout()
-    {
-        Auth::user()->tokens()->delete();
+    public function logout()
+    {   
+
+        $user = auth()->user();
+        $user = User::find($user->id);
+        $user->tokens()->delete();
+
         //Auth::user()->Passport::tokensExpireIn(Carbon::now()->addDays(15));
         return response()->json([
             'status' => 1,
             'message' => 'Successfully logged out'
         ]);
-    } */
+    }
 
     /* public function user(Request $request)
     {

@@ -22,3 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('eventosGet', [EventosApiController::class, 'eventosGet'])->name('api.eventosGet');
 
 Route::post('login', [AuthenticatedAPIController::class, 'login'])->name('api.login');
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('logout', [AuthenticatedAPIController::class, 'logout'])->name('api.logout');
+    
+});

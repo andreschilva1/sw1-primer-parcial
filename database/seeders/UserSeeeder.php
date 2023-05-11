@@ -24,7 +24,8 @@ class UserSeeeder extends Seeder
             'password' => $password,
             'profile_photo_path' => null,
             'telefono' => '69465520',
-        ])->assignRole('Admin');
+            'tipo' => 'Cliente'
+        ])->assignRole('Cliente');
 
         User::create([
             'name' => 'Carlos Ponce',
@@ -32,7 +33,8 @@ class UserSeeeder extends Seeder
             'password' => $password,
             'profile_photo_path' => null,
             'telefono' => '65152340',
-        ])->assignRole('Organizador');
+            'tipo' => 'Cliente'
+        ])->assignRole('Cliente');
 
         User::create([
             'name' => 'Juan Mendoza Pereira',
@@ -40,49 +42,59 @@ class UserSeeeder extends Seeder
             'password' => $password,
             'profile_photo_path' => null,
             'telefono' => '75174852',
-        ])->assignRole('Organizador');
+            'tipo' => 'Cliente'
+        ])->assignRole('Cliente');
         User::create([
             'name' => 'Marco Antonio Soliz',
             'email' => 'marco@gmail.com',
             'password' => $password,
             'profile_photo_path' => null,
             'telefono' => '63295852',
-        ])->assignRole('Cliente');
+            'tipo' => 'Fotografo'
+        ])->assignRole('Fotografo');
         User::create([
             'name' => 'Lucia Rodrigues',
-            'email' => 'lucia_bnb@gmail.com',
+            'email' => 'lucia@gmail.com',
             'password' => $password,
             'profile_photo_path' => null,
             'telefono' => '63295811',
-        ])->assignRole('Cliente');
+            'tipo' => 'Fotografo'
+        ])->assignRole('Fotografo');
 
         User::create([
             'name' => 'Enrique Iglesias',
-            'email' => 'enrique_bnb@gmail.com',
+            'email' => 'enrique@gmail.com',
             'password' => $password,
             'profile_photo_path' => null,
             'telefono' => '64140472',
+            'tipo' => 'Fotografo'
         ])->assignRole('Fotografo');
+
         User::create([
             'name' => 'Andres Luis Guerra',
-            'email' => 'andres_bnb@gmail.com',
+            'email' => 'andres@gmail.com',
             'password' => $password,
             'profile_photo_path' => null,
             'telefono' => '64140472',
-        ])->assignRole('Fotografo');
+            'tipo' => 'Organizador'
+        ])->assignRole('Organizador');
+
         User::create([
             'name' => 'Alberto Soliz Montenegro',
-            'email' => 'alberto_bnb@gmail.com',
+            'email' => 'alberto@gmail.com',
             'password' => $password,
             'profile_photo_path' => null,
             'telefono' => '74191823',
-        ])->assignRole('Admin');
+            'tipo' => 'Organizador'
+        ])->assignRole('Organizador');
+        
         User::create([
             'name' => 'Patrick Smith',
-            'email' => 'patrick_bnb@gmail.com',
+            'email' => 'patrick@gmail.com',
             'password' => $password,
             'profile_photo_path' => null,
             'telefono' => '69181875',
+            'tipo' => 'Organizador'
         ])->assignRole('Admin');
  
     } 

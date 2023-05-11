@@ -13,13 +13,21 @@ class Cliente extends Model
 
     protected $fillable = [
         'user_id',
+        'foto1',
+        'foto2',
+        'foto3',
     ];
 
     
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    /* public function eventos()
+    {
+        return $this->hasMany(Evento::class, 'cliente_id', 'id');
+    } */
 
 }

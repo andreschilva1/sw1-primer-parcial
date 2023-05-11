@@ -10,7 +10,7 @@
         :aria-expanded="open"                        
     >
        
-        <img class="w-8 h-8 rounded-full" src="{{ asset('storage/'. Auth::user()->profile_photo_path) }}" width="32" height="32" alt="{{ Auth::user()->name }}" />
+        <img class="w-8 h-8 rounded-full" src="{{  Auth::user()->profile_photo_path }}" width="32" height="32" alt="{{ Auth::user()->name }}" />
         <div class="flex items-center truncate">
             <span class="truncate ml-2 text-sm font-medium group-hover:text-slate-800">{{ Auth::user()->name }}</span>
             <svg class="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400" viewBox="0 0 12 12">

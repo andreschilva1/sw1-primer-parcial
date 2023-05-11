@@ -20,6 +20,7 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasRoles;
+    
 
     /**
      * The attributes that are mass assignable.
@@ -30,7 +31,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'profile_photo_path'
+        'profile_photo_path',
+        'tipo'
     ];
 
     /**
@@ -43,6 +45,7 @@ class User extends Authenticatable
         'remember_token',
         'two_factor_recovery_codes',
         'two_factor_secret',
+
     ];
 
     /**
@@ -79,6 +82,7 @@ class User extends Authenticatable
     public function fotografo(){
         return $this->hasOne(Fotografo::class,'user_id','id');
     }
+    
     public function cliente(){
         return $this->hasOne(Cliente::class,'user_id','id');
     }

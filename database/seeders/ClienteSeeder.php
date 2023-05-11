@@ -17,11 +17,16 @@ class ClienteSeeder extends Seeder
     public function run()
     {
         Cliente::create([
-            'user_id' => 4,
+            'user_id' => 1,
          ]);
  
          Cliente::create([
-             'user_id' => 5,
+             'user_id' => 2,
          ]);
+        
+         Cliente::create([
+            'user_id' => 3,
+        ]);
+   
     } 
 }

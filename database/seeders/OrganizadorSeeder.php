@@ -19,11 +19,15 @@ class OrganizadorSeeder extends Seeder
         
 
         Organizador::create([
-           'user_id' => 2,
+           'user_id' => 7,
         ]);
 
         Organizador::create([
-            'user_id' => 3,
+            'user_id' => 8,
+        ]);
+
+        Organizador::create([
+            'user_id' => 9,
         ]);
     }
 }

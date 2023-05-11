@@ -95,7 +95,7 @@ class UpdateEvent extends Component
     public function edit(Evento $evento)
     {
         $this->evento = $evento;
-        //dd($this->evento);
+        //dd($evento);
         $this->openEdit = !$this->openEdit;
     }
 

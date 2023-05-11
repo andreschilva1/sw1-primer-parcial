@@ -66,7 +66,7 @@ class CreateUser extends Component
 
         $nombre = $this->foto->getClientOriginalName();
         //dd($usuario->id);
-        $ruta = $this->foto->storeAs('public/usuarios/' . $usuario->id , $nombre);
+        $ruta = $this->foto->storeAs('public/perfil/' . $usuario->id , $nombre);
         $url = Storage::url($ruta);
 
         $usuario->profile_photo_path = $url;
@@ -77,14 +77,24 @@ class CreateUser extends Component
             Cliente::create([
                 'user_id' => $usuario->id,
             ]);
+            $usuario->estado = 'Cliente';
+            $usuario->save();
         }elseif($usuario->model_has_role->role->name == 'Fotografo'){
             Fotografo::create([
                 'user_id' => $usuario->id,
             ]);
+            
+            $usuario->estado = 'Fotografo';
+            $usuario->save();
+       
         }elseif($usuario->model_has_role->role->name == 'Organizador'){
             Organizador::create([
                 'user_id' => $usuario->id,
             ]);
+
+            $usuario->estado = 'Cliente';
+            $usuario->save();
+       
         }
         
         

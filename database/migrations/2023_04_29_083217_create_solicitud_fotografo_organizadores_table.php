@@ -20,10 +20,10 @@ return new class extends Migration
             $table->String('estado');
 
             $table->unsignedBigInteger('organizadores_id');
-            $table->foreign('organizadores_id')->references('id')->on('organizadores');
+            $table->foreign('organizadores_id')->references('id')->on('organizadores')->onUpdate('cascade')->onDelete('cascade');
             
             $table->unsignedBigInteger('fotografos_id');
-            $table->foreign('fotografos_id')->references('id')->on('fotografos');
+            $table->foreign('fotografos_id')->references('id')->on('fotografos')->onUpdate('cascade')->onDelete('cascade');
             
             $table->unsignedBigInteger('eventos_id');
             $table->foreign('eventos_id')->references('id')->on('eventos')->onUpdate('cascade')->onDelete('cascade');

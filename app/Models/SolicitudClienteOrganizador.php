@@ -28,12 +28,19 @@ class SolicitudClienteOrganizador extends Model
 
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class);
+        return $this->belongsTo(Cliente::class, 'clientes_id', 'id');
     }
 
     public function evento()
     {
-        return $this->belongsTo(Evento::class);
+        return $this->belongsTo(Evento::class, 'eventos_id', 'id');
+    }
+
+    public static function existeSolicitud( $eventid) {
+        //dd($eventid);
+        $solicitudCliente = SolicitudClienteOrganizador::select('solicitud_cliente_organizadores.*')->where('eventos_id',$eventid)->where('clientes_id',auth()->user()->cliente->id)->first();
+        return  $solicitudCliente ;
+             
     }
 
 }
